@@ -1,0 +1,41 @@
+
+/* =============================================
+    TEMPLATE 1: AL-BAITULLAH
+    Theme: Luxury Gold & Midnight Blue
+    Fonts: Cinzel Decorative (display), Lora (body), Amiri (arabic)
+    Color Variables — easy to customize:
+============================================= */
+:root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dark: #8B6914;
+    --midnight: #0A0E1A;
+    --midnight-mid: #131929;
+    --midnight-light: #1E2A45;
+    --cream: #F5EDD6;
+    --cream-dark: #DDD0AD;
+    --white: #FFFFFF;
+    --text-main: #E8DFC9;
+    --text-muted: #8A9BB5;
+    --success: #2ECC71;
+    --danger: #E74C3C;
+    --font-display: 'Cinzel Decorative', serif;
+    --font-body: 'Lora', serif;
+    --font-arabic: 'Amiri', serif;
+    --radius: 12px;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --shadow-gold: 0 4px 24px rgba(201, 168, 76, 0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--midnight);
+    color: var(--text-main);
+    min-height: 100vh;
+}

@@ -2,14 +2,23 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::get('/admin', function () {
+    return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::post('/logout', function (Request $request) {
+    Auth::logout();
+    $request . session()->invalidate();
+    $request . session()->regenerateToken();
+    return redirect('/'); // Arahkan ke halaman depan setelah keluar
+})->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -17,4 +26,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
