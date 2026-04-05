@@ -212,19 +212,24 @@
 }
 
 .avatar {
-    width: 36px;
-    height: 36px;
-    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    width: 40px;
+    height: 40px;
+    background: var(--midnight-light); /* Background cadangan */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--midnight);
+    overflow: hidden; /* MEMOTONG gambar agar jadi bulat */
+    border: 2px solid rgba(201, 168, 76, 0.4); /* Border emas */
     cursor: pointer;
 }
 
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* MENJAGA proporsi muka agar tidak gepeng */
+    display: block;
+}
 .admin-body {
     padding: 2rem;
 }
