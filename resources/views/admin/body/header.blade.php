@@ -8,7 +8,16 @@
 
         <div class="dropdown">
             <div class="avatar" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
+                @php
+                    // Logika: Jika user punya foto di DB, pakai itu. Jika tidak, pakai default.
+                    $userPhoto = Auth::user()->photo;
+                    $photoPath =
+                        $userPhoto && file_exists(public_path('backend/image/' . $userPhoto))
+                            ? asset('backend/assets/image/' . $userPhoto)
+                            : asset('backend/assets/upload/admin-image.png'); // Ganti dengan nama file defaultmu
+                @endphp
+
+                <img src="{{ $photoPath }}" alt="user-profile" class="avatar-img">
             </div>
 
             <ul class="dropdown-menu dropdown-menu-end profile-dropdown" aria-labelledby="profileDropdown">
@@ -33,24 +42,11 @@
                 </li>
 
                 <li>
-                    <div class="dropdown-divider"></div>
+                    <a href="{{ route('admin.logout') }}" class="dropdown-item notify-item">
+                        <i class="mdi mdi-lock-outline"></i>
+                        <span>Logout Admin</span>
+                    </a>
                 </li>
-
-                <li>
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="dropdown-item notify-item logout-item"
-                            style="width: 100%; border: none; background: none; display: flex; align-items: center; gap: 12px; padding: 12px 20px;">
-                            <i class="mdi mdi-location-exit"
-                                style="font-size: 1.2rem; color: var(--gold); width: 20px; text-align: center;"></i>
-                            <span style="color: var(--text-muted); font-size: 0.9rem;">Logout</span>
-                        </button>
-                    </form>
-                </li>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
             </ul>
         </div>
     </div>
