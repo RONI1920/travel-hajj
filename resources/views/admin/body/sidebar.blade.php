@@ -21,16 +21,5 @@
         <div class="menu-item"><span class="icon">📈</span> Laporan Keuangan</div>
         <div class="menu-item"><span class="icon">📉</span> Statistik</div>
         <div class="menu-item"><span class="icon">⚙️</span> Pengaturan</div>
-
-        {{-- Tombol Logout biasanya menggunakan Form di Laravel untuk keamanan --}}
-        <div class="menu-item" style="color: #ff4d4d; margin-top: 20px; cursor: pointer;"
-            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <span class="icon">🚪</span> Keluar
-        </div>
-
-        {{-- Form Tersembunyi --}}
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-        </form>
     </div>
 </div>

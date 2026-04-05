@@ -1,5 +1,113 @@
 
 /* ============ ADMIN PANEL ============ */
+
+/* Menyesuaikan wadah dropdown */
+.profile-dropdown {
+    position: absolute !important;
+    top: 100% !important;
+    right: 0 !important;
+    
+    /* TRICK: Lebar otomatis mengikuti isi teks paling panjang */
+    width: max-content; 
+    min-width: 200px; 
+    max-width: 300px; /* Batas maksimal agar tidak terlalu lebar */
+    
+    background: var(--midnight-mid) !important;
+    border: 1px solid rgba(201, 168, 76, 0.3) !important;
+    border-radius: var(--radius) !important;
+    padding: 10px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+/* Pastikan pembungkusnya relatif */
+.topbar-right .dropdown {
+    position: relative;
+}
+
+.profile-dropdown {
+    position: absolute; /* WAJIB: Agar melayang di atas konten */
+    top: 100%;          /* Muncul tepat di bawah avatar */
+    right: 0;           /* Rata kanan dengan avatar */
+    z-index: 1000;      /* Agar tidak tertutup konten dashboard */
+    
+    display: none;      /* Sembunyikan dulu, nanti dibuka lewat JS/Bootstrap */
+    min-width: 200px;
+    background: var(--midnight-mid);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    border-radius: var(--radius);
+    padding: 15px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    margin-top: 10px;
+}
+
+/* Class ini akan ditambahkan Bootstrap otomatis saat diklik */
+.profile-dropdown.show {
+    display: block;
+}
+
+/* Judul "Welcome !" */
+.dropdown-header.noti-title {
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 5px;
+}
+
+.dropdown-header h6 {
+    color: var(--gold-light);
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+/* Link/Item Menu */
+.dropdown-item.notify-item {
+    padding: 10px 20px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    background: transparent;
+}
+
+/* Icon di dalam menu */
+.dropdown-item.notify-item i {
+    font-size: 1.1rem;
+    color: var(--gold); /* Icon warna emas */
+    width: 20px;
+    text-align: center;
+}
+
+/* Hover State */
+.dropdown-item.notify-item:hover {
+    color: var(--cream);
+    background: rgba(201, 168, 76, 0.08); /* Highlight emas transparan */
+}
+
+/* Garis pemisah */
+.dropdown-divider {
+    border-top: 1px solid rgba(201, 168, 76, 0.15);
+    margin: 8px 0;
+}
+
+/* Efek saat dropdown muncul (Bootstrap default behavior adjustment) */
+.dropdown-menu-end {
+    right: 0;
+    left: auto;
+}
+
+/* Khusus Logout agar terlihat sedikit berbeda (opsional) */
+.dropdown-item.notify-item[href*="logout"]:hover {
+    color: var(--danger);
+    background: rgba(231, 76, 60, 0.05);
+}
+.dropdown-item.notify-item[href*="logout"] i {
+    color: var(--gold); /* Tetap emas atau ganti var(--danger) jika ingin variasi */
+}
+
+
+
 .admin-layout {
     display: flex;
     min-height: 100vh;

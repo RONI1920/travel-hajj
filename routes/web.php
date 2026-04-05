@@ -15,9 +15,11 @@ Route::get('/admin', function () {
 
 Route::post('/logout', function (Request $request) {
     Auth::logout();
-    $request . session()->invalidate();
-    $request . session()->regenerateToken();
-    return redirect('/'); // Arahkan ke halaman depan setelah keluar
+
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect('/');
 })->name('logout');
 
 Route::middleware('auth')->group(function () {
