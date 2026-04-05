@@ -5,6 +5,7 @@
     Fonts: Cinzel Decorative (display), Lora (body), Amiri (arabic)
     Color Variables — easy to customize:
 ============================================= */
+/* ============ GLOBAL & LAYOUT ============ */
 :root {
     --gold: #C9A84C;
     --gold-light: #E8C97A;
@@ -13,18 +14,120 @@
     --midnight-mid: #131929;
     --midnight-light: #1E2A45;
     --cream: #F5EDD6;
-    --cream-dark: #DDD0AD;
-    --white: #FFFFFF;
     --text-main: #E8DFC9;
     --text-muted: #8A9BB5;
-    --success: #2ECC71;
-    --danger: #E74C3C;
-    --font-display: 'Cinzel Decorative', serif;
-    --font-body: 'Lora', serif;
-    --font-arabic: 'Amiri', serif;
     --radius: 12px;
-    --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    --shadow-gold: 0 4px 24px rgba(201, 168, 76, 0.25);
+    --font-display: 'Cinzel Decorative', serif;
+}
+
+.page.active { display: block; }
+
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+    background: var(--midnight);
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0; /* Mencegah overflow pada flexbox */
+}
+
+/* ============ TOPBAR ============ */
+.topbar {
+    background: var(--midnight-mid);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+    padding: 0 2rem;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--midnight);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.avatar:hover {
+    box-shadow: 0 0 15px rgba(201, 168, 76, 0.4);
+}
+
+/* ============ DROPDOWN MENU (MELAYANG) ============ */
+.profile-dropdown {
+    list-style: none;
+    position: absolute !important;
+    top: 100% !important;
+    right: 0 !important;
+    left: auto !important;
+    transform: none !important; /* Reset transform bootstrap agar tidak lari */
+    
+    background: var(--midnight-mid) !important;
+    border: 1px solid rgba(201, 168, 76, 0.3) !important;
+    border-radius: var(--radius) !important;
+    min-width: 200px;
+    padding: 10px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    margin-top: 10px !important;
+    z-index: 9999;
+}
+
+.dropdown-item.notify-item {
+    padding: 12px 20px;
+    color: var(--text-muted) !important;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none !important;
+    font-size: 0.9rem;
+}
+
+.dropdown-item.notify-item i {
+    font-size: 1.2rem;
+    color: var(--gold);
+    width: 20px;
+    text-align: center;
+}
+
+.dropdown-item.notify-item:hover {
+    background: rgba(201, 168, 76, 0.1) !important;
+    color: var(--cream) !important;
+}
+
+.dropdown-header h6 {
+    color: var(--gold-light);
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    padding: 5px 20px;
+}
+
+.dropdown-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin: 8px 0;
+}
+
+/* Logout Hover Red */
+.logout-item:hover {
+    background: rgba(231, 76, 60, 0.1) !important;
+    color: #E74C3C !important;
 }
 
 * {

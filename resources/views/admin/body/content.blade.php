@@ -1,14 +1,7 @@
     <div class="main-content">
-        <div class="topbar">
-            <div class="topbar-title">Dashboard Admin</div>
-            <div class="topbar-right">
-                <span style="font-size:0.85rem;color:var(--text-muted)">Senin, 30 Des 2024</span>
-                <div class="avatar">SA</div>
-            </div>
-        </div>
         <div class="admin-body">
             <div style="font-family:var(--font-arabic);font-size:1.2rem;color:var(--gold);margin-bottom:1.5rem">بِسْمِ
-                اللهِ — Selamat datang, Super Admin</div>
+                اللهِ — Selamat datang, {{ Auth::user()->name }} !</div>
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-icon gold">👥</div>
